@@ -4,8 +4,8 @@ check.utility <- function(x = c("muscle", "clustalo", "dssp", "stride", "mustang
   utilities <- match.arg(x, several.ok = TRUE)
 
   missing.util <- sapply(utilities, function(x) {
-    try(.get.exepath(x), silent=TRUE)
-    if(inherits(.Last.value, "try-error")) {
+    rtn <- try(.get.exepath(x), silent=TRUE)
+    if(inherits(rtn, "try-error")) {
       TRUE
     }
     else {
